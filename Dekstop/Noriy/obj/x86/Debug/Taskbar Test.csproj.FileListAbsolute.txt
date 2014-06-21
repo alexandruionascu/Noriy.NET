@@ -1,0 +1,27 @@
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\bin\Debug\Taskbar Test.exe
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\bin\Debug\Taskbar Test.pdb
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar_Test.Form1.resources
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar_Test.Properties.Resources.resources
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar Test.exe
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar Test.pdb
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\Projects\Documents\Visual Studio 2010\Projects\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar Test.csproj.ResolveComReference.cache
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Interop.IWshRuntimeLibrary.dll
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar Test.csproj.ResolveComReference.cache
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar_Test.Form1.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar Test.csproj.GenerateResource.Cache
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar_Test.Login.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar_Test.Admin.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar Test.csprojResolveAssemblyReference.cache
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Debug\FiddlerCore3dot5.dll
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Debug\FiddlerCore3dot5.xml
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Taskbar_Test.Logout.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Debug\Noriy.exe.config
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Debug\Noriy.exe
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Debug\Noriy.pdb
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Noriy.Properties.Resources.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Noriy.exe
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Debug\Noriy.pdb

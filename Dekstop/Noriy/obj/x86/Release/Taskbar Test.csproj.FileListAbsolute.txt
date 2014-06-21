@@ -1,0 +1,16 @@
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Release\Taskbar Test.exe.config
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Release\Taskbar Test.exe
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Release\Taskbar Test.pdb
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Interop.IWshRuntimeLibrary.dll
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar Test.csproj.ResolveComReference.cache
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar_Test.Admin.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar_Test.Form1.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar_Test.Login.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar_Test.Properties.Resources.resources
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar Test.csproj.GenerateResource.Cache
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar Test.exe
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar Test.pdb
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Release\FiddlerCore3dot5.dll
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\bin\Release\FiddlerCore3dot5.xml
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar Test.csprojResolveAssemblyReference.cache
+C:\Users\user\Downloads\Taskbar Test\Taskbar Test\Taskbar Test\obj\x86\Release\Taskbar_Test.Logout.resources

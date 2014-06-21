@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DbModelStoreContainer">
+    <EntitySet Name="Traffic" EntityType="DbModel.Store.Traffic" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UrlBlacklists" EntityType="DbModel.Store.UrlBlacklists" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Friendships" EntityType="DbModel.Store.Friendships" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="DbModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FacebookIds" EntityType="DbModel.Store.FacebookIds" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CategoryLinks" EntityType="DbModel.Store.CategoryLinks" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Blackurls" EntityType="DbModel.Store.Blackurls" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CategoryCategoryLink" Association="DbModel.Store.CategoryCategoryLink">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="CategoryLink" EntitySet="CategoryLinks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Traffic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Time" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UrlBlacklists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Friendships">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserId2" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FacebookIds">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FbId" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoryLinks">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Blackurls">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="CategoryCategoryLink">
+    <End Role="Category" Type="DbModel.Store.Categories" Multiplicity="1" />
+    <End Role="CategoryLink" Type="DbModel.Store.CategoryLinks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CategoryLink">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
