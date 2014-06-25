@@ -1,5 +1,5 @@
 Noriy
 =====
-An Awesome Parental Application
+An Awesome Parental Control Application
 
 Still in development
