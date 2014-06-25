@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Traffic";
+    Layout = "~/Views/Shared/DashboardLayout.cshtml";
+}
+
+<h2>Traffic</h2>
+
+<!---<p>You are logged as @ViewBag.UserId</p> -->
+
+<table id ="traffic" class="table table-striped">
+
+    <thead>
+
+        <tr>
+
+            <th>Url</th>
+
+            <th>Time</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="traffic-body">
+
+        
+
+    </tbody>
+
+</table>
+
+
+
+<script src="~/Scripts/cookies.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+
+    //$(document).ready(function () {
+    //    var url = "";
+    //    $.getJSON(url, function (data) {
+    //        console.log(data);
+    //        $.each(data, function (index, value) {
+                
+    //        });
+    //    });
+
+
+
+    //});
+
+    $(document).ready(function () {
+        $.ajax({
+            url: "http://localhost:8942/api/traffic/" + "@ViewBag.UserId" ,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (index, value) {
+                    if(value.url.length < 32)
+                        $("#traffic-body").append("<tr><td>" + value.url + "</td><td>" + value.time + "</td></tr>");
+                });
+            },
+            error: function (request, status, error) {
+                var obj = jQuery.parseJSON(request.responseText);
+                alert(request.responseText);
+            },
+            beforeSend: setHeader
+        });
+    });
+   
+
+    function setHeader(xhr) {
+        xhr.setRequestHeader('Authorization', 'bearer ' + docCookies.getItem("NoriyToken") );
+    }
+
+</script>
+
+
+
+
