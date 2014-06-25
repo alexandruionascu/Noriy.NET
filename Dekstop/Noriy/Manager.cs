@@ -146,6 +146,11 @@ namespace Noriy
             else
                 domain = url;
 
+            if (domain.Trim() == "www")
+                domain = url;
+
+            
+
 
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:6649/api/Check");
             httpWebRequest.ContentType = "application/json";
@@ -165,7 +170,9 @@ namespace Noriy
                     using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                     {
                         var result = streamReader.ReadToEnd();
-                        MessageBox.Show(result.ToString());
+                        if(result.ToString() != "0")
+                            MessageBox.Show(result.ToString());
+                      
                         return Convert.ToInt32(result.ToString());
                     }
 
@@ -176,7 +183,7 @@ namespace Noriy
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                    return 0;
+                    return 1;
                 }
             }
 

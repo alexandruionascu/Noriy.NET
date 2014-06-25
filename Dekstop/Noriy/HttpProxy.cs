@@ -25,23 +25,27 @@ namespace Noriy
         //Constructor
         public HttpProxy()
         {
+            MessageBox.Show("server started");
             //Add the events
             Fiddler.FiddlerApplication.BeforeRequest += FiddlerApplication_BeforeRequest;
             Fiddler.FiddlerApplication.AfterSessionComplete += FiddlerApplication_AfterSessionComplete;
 
-             // Initial: Fiddler.FiddlerApplication.Startup(8888, true, true);
+            // Initial:
+           // Fiddler.FiddlerApplication.Startup(8888, true, true);
              Fiddler.FiddlerApplication.Startup(8888, FiddlerCoreStartupFlags.Default);
         }
 
         //Before Request
         void FiddlerApplication_BeforeRequest(Fiddler.Session oSession)
         {
-            //if (Manager.Check(oSession.url) > 0)
-            //{
-            //    oSession.url = RedirectUrl;
-            //}
+            if (Manager.Check(oSession.url) > 0)
+           {
+               // oSession.url = RedirectUrl;
+               oSession.oRequest.FailSession(404, "Blocked", "Noriy blocked this website");
+           }
+           
 
-            MessageBox.Show(oSession.url);
+           // MessageBox.Show(oSession.url);
         }
 
         //AfterSessionComplete
