@@ -1,3 +1,5 @@
 Noriy
 =====
-An Awesome Parental Control/Proxy Server Service
+An Awesome Parental Application
+
+Still in development
