@@ -56,10 +56,6 @@
             self.loggingIn(false);
 
             if (data.userName && data.access_token) {
-
-                //set cookies
-                docCookies.setItem("NoriyToken", data.access_token, infinity, "/");
-                console.log(data);
                 app.navigateToLoggedIn(data.userName, data.access_token, self.rememberMe());
             } else {
                 self.errors.push("An unknown error occurred.");

@@ -55,11 +55,11 @@ namespace NoriyWeb
             //    consumerKey: "",
             //    consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //    appId: "",
-            //    appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "1449626125292467",
+               appSecret: "ae315f46aefc018828a1d85b654bf701");
 
-            //app.UseGoogleAuthentication();
+            app.UseGoogleAuthentication();
         }
     }
 }

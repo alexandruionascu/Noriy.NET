@@ -21,6 +21,8 @@
         <AssociationConnector Association="NoriyModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="NoriyModel.FK_CategoryCategoryLink" ManuallyRouted="false" />
         <AssociationConnector Association="NoriyModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NoriyModel.Danger" Width="1.5" PointX="3.375" PointY="9.75" />
+       <!-- <AssociationConnector Association="NoriyModel.FK_CategoryUrlBlacklist" /> -->
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

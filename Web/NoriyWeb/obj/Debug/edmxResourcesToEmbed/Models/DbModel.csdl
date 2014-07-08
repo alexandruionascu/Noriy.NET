@@ -100,6 +100,7 @@
     <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Accepted" Type="Boolean" />
   </EntityType>
   <EntityType Name="UrlBlacklist">
     <Key>
@@ -107,6 +108,8 @@
     </Key>
     <Property Name="Id" Type="Guid" Nullable="false" />
     <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="NoriyModel.FK_CategoryUrlBlacklist" FromRole="UrlBlacklist" ToRole="Category" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
     <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -181,5 +184,30 @@
       <End Role="AspNetRoles" EntitySet="AspNetRoles" />
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
+    <AssociationSet Name="FK_CategoryUrlBlacklist" Association="NoriyModel.FK_CategoryUrlBlacklist">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="UrlBlacklist" EntitySet="UrlBlacklists" />
+    </AssociationSet>
+    <EntitySet Name="Dangers" EntityType="NoriyModel.Danger" />
   </EntityContainer>
+  <Association Name="FK_CategoryUrlBlacklist">
+    <End Type="NoriyModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="NoriyModel.UrlBlacklist" Role="UrlBlacklist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UrlBlacklist">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Danger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

@@ -18,22 +18,24 @@ namespace NoriyWeb.Controllers
         private NoriyEntities db = new NoriyEntities();
 
         // GET api/Blackurl
+    /*
         public IQueryable<Blackurl> GetBlackurls()
         {
             return db.Blackurls;
         }
+     */
 
         // GET api/Blackurl/5
         [ResponseType(typeof(Blackurl))]
-        public IHttpActionResult GetBlackurl(Guid id)
+        public IHttpActionResult GetBlackurl(string id)
         {
-            Blackurl blackurl = db.Blackurls.Find(id);
-            if (blackurl == null)
+            var blackUrls = db.Blackurls.Where(e => e.UserId == id);
+            if (blackUrls == null)
             {
                 return NotFound();
             }
 
-            return Ok(blackurl);
+            return Ok(blackUrls);
         }
 
         // PUT api/Blackurl/5
@@ -78,6 +80,8 @@ namespace NoriyWeb.Controllers
             {
                 return BadRequest(ModelState);
             }
+
+            blackurl.Id = Guid.NewGuid();
 
             db.Blackurls.Add(blackurl);
 

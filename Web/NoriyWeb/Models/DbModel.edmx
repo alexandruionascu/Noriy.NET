@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NoriyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NoriyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -81,6 +81,14 @@
           <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Danger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="FacebookIds">
           <Key>
             <PropertyRef Name="Id" />
@@ -105,6 +113,7 @@
           <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Time" Type="nvarchar(max)" />
+          <Property Name="Accepted" Type="bit" />
         </EntityType>
         <EntityType Name="UrlBlacklists">
           <Key>
@@ -112,6 +121,7 @@
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_CategoryCategoryLink">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
@@ -121,6 +131,18 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="CategoryLinks">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryUrlBlacklist">
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="UrlBlacklists" Type="Self.UrlBlacklists" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UrlBlacklists">
               <PropertyRef Name="CategoryId" />
             </Dependent>
           </ReferentialConstraint>
@@ -191,6 +213,7 @@
           <EntitySet Name="Blackurls" EntityType="Self.Blackurls" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryLinks" EntityType="Self.CategoryLinks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Danger" EntityType="Self.Danger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FacebookIds" EntityType="Self.FacebookIds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Friendships" EntityType="Self.Friendships" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Traffic" EntityType="Self.Traffic" Schema="dbo" store:Type="Tables" />
@@ -198,6 +221,10 @@
           <AssociationSet Name="FK_CategoryCategoryLink" Association="Self.FK_CategoryCategoryLink">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="CategoryLinks" EntitySet="CategoryLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryUrlBlacklist" Association="Self.FK_CategoryUrlBlacklist">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="UrlBlacklists" EntitySet="UrlBlacklists" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -216,8 +243,7 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NoriyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -321,6 +347,7 @@
           <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Accepted" Type="Boolean" />
         </EntityType>
         <EntityType Name="UrlBlacklist">
           <Key>
@@ -328,6 +355,8 @@
           </Key>
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="NoriyModel.FK_CategoryUrlBlacklist" FromRole="UrlBlacklist" ToRole="Category" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -402,7 +431,32 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <AssociationSet Name="FK_CategoryUrlBlacklist" Association="NoriyModel.FK_CategoryUrlBlacklist">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="UrlBlacklist" EntitySet="UrlBlacklists" />
+          </AssociationSet>
+          <EntitySet Name="Dangers" EntityType="NoriyModel.Danger" />
         </EntityContainer>
+        <Association Name="FK_CategoryUrlBlacklist">
+          <End Type="NoriyModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="NoriyModel.UrlBlacklist" Role="UrlBlacklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UrlBlacklist">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Danger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -503,6 +557,7 @@
           <EntitySetMapping Name="Traffic">
             <EntityTypeMapping TypeName="NoriyModel.Traffic">
               <MappingFragment StoreEntitySet="Traffic">
+                <ScalarProperty Name="Accepted" ColumnName="Accepted" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
@@ -513,6 +568,7 @@
           <EntitySetMapping Name="UrlBlacklists">
             <EntityTypeMapping TypeName="NoriyModel.UrlBlacklist">
               <MappingFragment StoreEntitySet="UrlBlacklists">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
               </MappingFragment>
@@ -526,6 +582,15 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Dangers">
+            <EntityTypeMapping TypeName="NoriyModel.Danger">
+              <MappingFragment StoreEntitySet="Danger">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -82,7 +82,6 @@ namespace NoriyWeb.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             db.Traffic.Add(traffic);
 
             try

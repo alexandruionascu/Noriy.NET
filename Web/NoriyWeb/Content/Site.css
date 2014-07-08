@@ -1,27 +1,30 @@
-﻿body {
+﻿/*ASP.NET Default STYLE*/
+
+    body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Patua One',cursive;
+    font-style: normal;
 }
 
-/* Set padding to keep content from hitting the edges */
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
+
 input,
 select,
 textarea {
     max-width: 280px;
 }
 
-/* Set padding to display errors that occur during databinding */
+
 .padding-error {
     padding-top: 20px;
 }
 
-/* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
 }
@@ -53,3 +56,103 @@ input[type="checkbox"].input-validation-error {
         padding: 10px 15px;
     }
 }
+
+.navbar-inverse {
+background-color: #0b333f;
+border-color: #e7e7e7;
+font-family: 'Patua One',cursive;
+color: white;
+
+}
+
+@font-face {
+  font-family: "Patua One";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Patua One"), local("PatuaOne-Regular"), url("http://themes.googleusercontent.com/static/fonts/patuaone/v4/yAXhog6uK3bd3OwBILv_SD8E0i7KZn-EPnyo3HZu7kw.woff") format("woff");
+}
+
+.navbar-brand {
+    color: white; 
+    font-size: 1.75em;
+    margin-left: 0;
+    font-weight: normal;
+}
+
+
+
+a:link, a:visited {
+	color: #F1505A;
+}
+a:hover, a:active {
+	color: #F1505A;
+	text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal; /* reset default browser weight for our webfonts */
+	font-family: 'Patua One', cursive;
+}
+h1 {
+	font-size: 1.5em; /* 24px */
+	line-height: 1; /* 24px */
+	margin-top: 1.42em;
+	margin-bottom: 0em;
+}
+h2 {
+	font-size: 1.3125em; /* 21px */
+	line-height: 1.1429; /* 24px */
+	margin-top: 1.1429em;
+	margin-bottom: 0em;
+}
+h3 {
+	font-size: 1.125em; /* 18px */
+	line-height: 1.3333; /* 24px */
+	margin-top: 1.3333em;
+	margin-bottom: 0em;
+}
+h4 {
+	font-size: 1em; /* 16px */
+	line-height: 1.5; /* 24px */
+	margin-top: 1.5em;
+	margin-bottom: 0em;
+}
+h5 {
+	font-size: 0.875em; /* 14px */
+	line-height: 1.7143; /* 24px */
+	margin-top: 1.7143em;
+	margin-bottom: 0em;
+}
+strong {
+	font-weight:normal;
+	font-family: 'Open Sans', sans-serif;
+}
+small {
+	font-size: 0.75em; /* 12px */
+	line-height: 2; /* 24px */
+	margin-top: 2em;
+	margin-bottom: 0em;
+}
+em {
+	font-style: normal;
+	font-family: 'Open Sans';
+}
+.muted {
+	color: #A5A5A2;
+	font-family: 'Quattrocento', serif;
+}
+.impressed {
+	text-shadow:
+ -1px -1px 0 rgba(0, 0, 0, 0.5), /* shadow */  1px 1px 0 rgba(255, 255, 255, 0.9); /* highlight */
+}
+.more-link {
+	font-size: .875em; /* 14px */
+	margin-top: 1.5em;
+	font-family: 'Patua One', cursive;
+}
+.more-link:link, .more-link:visited {
+	color: #f0bf00;
+	text-transform: uppercase;
+}
+
+

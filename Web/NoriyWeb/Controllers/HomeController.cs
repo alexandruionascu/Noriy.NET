@@ -9,9 +9,9 @@ namespace NoriyWeb.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Noriy";
             return View();
         }
-
         
     }
 }

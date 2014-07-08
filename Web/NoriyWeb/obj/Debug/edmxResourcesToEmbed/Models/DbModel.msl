@@ -95,6 +95,7 @@
     <EntitySetMapping Name="Traffic">
       <EntityTypeMapping TypeName="NoriyModel.Traffic">
         <MappingFragment StoreEntitySet="Traffic">
+          <ScalarProperty Name="Accepted" ColumnName="Accepted" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Url" ColumnName="Url" />
@@ -105,6 +106,7 @@
     <EntitySetMapping Name="UrlBlacklists">
       <EntityTypeMapping TypeName="NoriyModel.UrlBlacklist">
         <MappingFragment StoreEntitySet="UrlBlacklists">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Url" ColumnName="Url" />
         </MappingFragment>
@@ -118,5 +120,14 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="Dangers">
+      <EntityTypeMapping TypeName="NoriyModel.Danger">
+        <MappingFragment StoreEntitySet="Danger">
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

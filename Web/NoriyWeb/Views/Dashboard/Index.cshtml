@@ -6,8 +6,112 @@
 
 
 <h3>Statistics</h3>
-<script src="~/Scripts/cookies.js"></script>
 
-<script>
-    alert(docCookies.getItem("NoriyToken"));
+<div class="row">
+    <!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Blocked Attempts
+            </div>
+            <div class="panel-body">
+                <p>How many times did Noriy keep your computer safe</p>
+            </div>
+            <div class="panel-footer" id="blocked">
+                0
+            </div>
+        </div>
+    </div>
+    <!-- /.col-lg-4 -->
+
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Blacklist
+            </div>
+            <div class="panel-body">
+                <p>How many websites you choosed to stay away</p>
+            </div>
+            <div class="panel-footer" id="blacklist">
+                0
+            </div>
+        </div>
+    </div>
+    <!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Traffic
+            </div>
+            <div class="panel-body">
+                <p>The web traffic registered by Noriy on this account</p>
+            </div>
+            <div class="panel-footer" id="traffic">
+                0
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Categories
+            </div>
+            <div class="panel-body">
+                <p>How many categories you chose to stay alerted</p>
+            </div>
+            <div class="panel-footer" id="categories">
+                0
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                Alerts
+            </div>
+            <div class="panel-body">
+                <p>How many websites you want to get alerted</p>
+            </div>
+            <div class="panel-footer" id="alerts">
+                0
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+            $.ajax({
+                url: "api/statistics?userid=" + "@ViewBag.UserId",
+                type: "GET",
+                success: function (response) {
+                    console.log(response);
+                    $("#blocked").text(response.blocked);
+                    $("#blacklist").text(response.blacklist);
+                    $("#traffic").text(response.traffic);
+                    $("#categories").text(response.categories);
+                    $("#alerts").text(response.alerts);
+
+                },
+                error: function (response) {
+                    console.log(response);
+                },
+                beforeSend: setHeader
+            });
+
+            //--------
+
+    });
+
+    function setHeader(xhr) {
+        var accessToken = sessionStorage["accessToken"] || localStorage["accessToken"];
+        if (accessToken)
+            xhr.setRequestHeader('Authorization', 'bearer ' + accessToken);
+    }
 </script>

@@ -16,7 +16,8 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -50,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.6.0\lib\net45\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -206,9 +210,18 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlackurlController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CategoryLinkController.cs" />
+    <Compile Include="Controllers\CheckController.cs" />
+    <Compile Include="Controllers\DangerController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\FacebookIdController.cs" />
+    <Compile Include="Controllers\FriendshipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TrafficController.cs" />
+    <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,6 +251,9 @@
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Danger.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -259,6 +275,9 @@
     <Compile Include="Models\Friendship.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RemoveCategory.cs" />
+    <Compile Include="Models\RemoveFriendship.cs" />
+    <Compile Include="Models\Statistics.cs" />
     <Compile Include="Models\Traffic.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -275,13 +294,20 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dataTables.bootstrap.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\blacklist.png" />
+    <Content Include="img\download.png" />
+    <Content Include="img\noriyImg.png" />
+    <Content Include="img\settings.png" />
+    <Content Include="img\sunsetsurf.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -342,10 +368,12 @@
     <Content Include="Content\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\font-awesome\scss\_variables.scss" />
+    <None Include="Properties\PublishProfiles\noriy - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\noriy - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\cookies.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
     <Content Include="Scripts\knockout-2.3.0.debug.js" />
     <Content Include="Scripts\knockout-2.3.0.js" />
     <Content Include="Scripts\knockout.validation.debug.js" />
@@ -384,6 +412,45 @@
     <Content Include="Scripts\sb-admin\plugins\morris\morris.js" />
     <Content Include="Scripts\sb-admin\plugins\morris\raphael-2.1.0.min.js" />
     <Content Include="Scripts\sb-admin\sb-admin.js" />
+    <Content Include="css\bootstrap-responsive.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\fontello-ie7.css" />
+    <Content Include="css\fontello.css" />
+    <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\style.css" />
+    <Content Include="font\fontello.svg" />
+    <Content Include="img\blog_img-01.jpg" />
+    <Content Include="img\blog_img-02.jpg" />
+    <Content Include="img\blog_img-03.jpg" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\grey-cardboard-bg.png" />
+    <Content Include="img\logo.png" />
+    <Content Include="img\portfolio-01.jpg" />
+    <Content Include="img\portfolio-02.jpg" />
+    <Content Include="img\portfolio-03.jpg" />
+    <Content Include="img\portrait-1.jpg" />
+    <Content Include="img\portrait-2.jpg" />
+    <Content Include="img\portrait-3.jpg" />
+    <Content Include="img\portrait-4.jpg" />
+    <Content Include="img\prettyPhoto\default\default_thumb.png" />
+    <Content Include="img\prettyPhoto\default\loader.gif" />
+    <Content Include="img\prettyPhoto\default\sprite.png" />
+    <Content Include="img\prettyPhoto\default\sprite_next.png" />
+    <Content Include="img\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="img\prettyPhoto\default\sprite_x.png" />
+    <Content Include="img\prettyPhoto\default\sprite_y.png" />
+    <Content Include="img\top-bg.jpg" />
+    <Content Include="img\top-bg3.jpg" />
+    <Content Include="img\yellow.png" />
+    <Content Include="img\yellow_testimonial.png" />
+    <Content Include="index.html" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.localscroll-1.2.7-min.js" />
+    <Content Include="js\jquery.prettyPhoto.js" />
+    <Content Include="js\jquery.scrollTo-1.4.2-min.js" />
+    <Content Include="js\site.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\_Home.cshtml" />
     <Content Include="Views\Home\_Login.cshtml" />
@@ -407,11 +474,19 @@
     </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\DashboardLayout.cshtml" />
+    <Content Include="Views\Dashboard\Categories.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Dashboard\MyBlacklist.cshtml" />
     <Content Include="Views\Dashboard\Traffic.cshtml" />
+    <Content Include="Views\Dashboard\Social.cshtml" />
+    <Content Include="font\fontello.eot" />
+    <Content Include="font\fontello.ttf" />
+    <Content Include="font\fontello.woff" />
+    <Content Include="Views\Dashboard\Friends.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Welcome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

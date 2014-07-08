@@ -2,12 +2,11 @@
 @{
     ViewBag.Title = "Traffic";
     Layout = "~/Views/Shared/DashboardLayout.cshtml";
+    
 }
 
 <h2>Traffic</h2>
-
 <!---<p>You are logged as @ViewBag.UserId</p> -->
-
 <table id ="traffic" class="table table-striped">
 
     <thead>
@@ -18,47 +17,42 @@
 
             <th>Time</th>
 
+            <th>Accepted</th>
+
         </tr>
 
     </thead>
 
     <tbody id="traffic-body">
-
-        
+       
 
     </tbody>
 
 </table>
 
-
-
-<script src="~/Scripts/cookies.js"></script>
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+<table id="list" class="scroll" cellpadding="0" cellspacing="0"></table>
+<div id="pager" class="scroll" style="text-align:center;"></div>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
+
+
+
 <script type="text/javascript">
-
     //$(document).ready(function () {
-    //    var url = "";
-    //    $.getJSON(url, function (data) {
-    //        console.log(data);
-    //        $.each(data, function (index, value) {
-                
-    //        });
-    //    });
-
-
-
+    //    $('#traffic').dataTable();
     //});
 
     $(document).ready(function () {
-        $.ajax({
-            url: "http://localhost:8942/api/traffic/" + "@ViewBag.UserId" ,
+        $.when($.ajax({
+            url: "../api/traffic/" + "@ViewBag.UserId",
             type: 'GET',
             dataType: 'json',
             success: function (data) {
                 $.each(data, function (index, value) {
-                    if(value.url.length < 32)
-                        $("#traffic-body").append("<tr><td>" + value.url + "</td><td>" + value.time + "</td></tr>");
+                    if (value.url.length < 32)
+                        $("#traffic-body").append("<tr><td>" + value.url + "</td><td>" + value.time + "</td><td>" + value.accepted + "</td></tr>");
                 });
             },
             error: function (request, status, error) {
@@ -66,13 +60,22 @@
                 alert(request.responseText);
             },
             beforeSend: setHeader
+        })).done(function () {
+            $('#traffic').DataTable();
         });
+
+       
     });
-   
 
     function setHeader(xhr) {
-        xhr.setRequestHeader('Authorization', 'bearer ' + docCookies.getItem("NoriyToken") );
+        var accessToken = sessionStorage["accessToken"] || localStorage["accessToken"];
+        if (accessToken)
+            xhr.setRequestHeader('Authorization', 'bearer ' + accessToken);
     }
+
+   
+
+
 
 </script>
 

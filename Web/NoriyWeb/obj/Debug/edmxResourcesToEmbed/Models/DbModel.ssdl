@@ -76,6 +76,14 @@
     <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Danger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <EntityType Name="FacebookIds">
     <Key>
       <PropertyRef Name="Id" />
@@ -100,6 +108,7 @@
     <Property Name="UserId" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Time" Type="nvarchar(max)" />
+    <Property Name="Accepted" Type="bit" />
   </EntityType>
   <EntityType Name="UrlBlacklists">
     <Key>
@@ -107,6 +116,7 @@
     </Key>
     <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CategoryId" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="FK_CategoryCategoryLink">
     <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
@@ -116,6 +126,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="CategoryLinks">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryUrlBlacklist">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="UrlBlacklists" Type="Self.UrlBlacklists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UrlBlacklists">
         <PropertyRef Name="CategoryId" />
       </Dependent>
     </ReferentialConstraint>
@@ -186,6 +208,7 @@
     <EntitySet Name="Blackurls" EntityType="Self.Blackurls" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CategoryLinks" EntityType="Self.CategoryLinks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Danger" EntityType="Self.Danger" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FacebookIds" EntityType="Self.FacebookIds" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Friendships" EntityType="Self.Friendships" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Traffic" EntityType="Self.Traffic" Schema="dbo" store:Type="Tables" />
@@ -193,6 +216,10 @@
     <AssociationSet Name="FK_CategoryCategoryLink" Association="Self.FK_CategoryCategoryLink">
       <End Role="Categories" EntitySet="Categories" />
       <End Role="CategoryLinks" EntitySet="CategoryLinks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryUrlBlacklist" Association="Self.FK_CategoryUrlBlacklist">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="UrlBlacklists" EntitySet="UrlBlacklists" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
