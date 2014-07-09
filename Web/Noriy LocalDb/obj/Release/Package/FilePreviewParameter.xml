@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="noriy" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\user\\documents\\visual\ studio\ 2013\\Projects\\Noriy\ LocalDb\\Noriy\ LocalDb\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\user\\documents\\visual\ studio\ 2013\\Projects\\Noriy\ LocalDb\\Noriy\ LocalDb\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\v11.0;AttachDbFilename=&quot;|DataDirectory|\aspnet-Noriy LocalDb-20140708042903.mdf&quot;;Initial Catalog=&quot;aspnet-Noriy LocalDb-20140708042903&quot;;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\user\\documents\\visual\ studio\ 2013\\Projects\\Noriy\ LocalDb\\Noriy\ LocalDb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="NoriyEntities-Web.config Connection String" description="" value="metadata=res://*/Models.DbModel.csdl|res://*/Models.DbModel.ssdl|res://*/Models.DbModel.msl;provider=System.Data.SqlClient;provider connection string='data source=(LocalDb)\v11.0;attachdbfilename=&quot;|DataDirectory|\aspnet-Noriy LocalDb-20140708042903.mdf&quot;;initial catalog=&quot;aspnet-Noriy LocalDb-20140708042903&quot;;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework'" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\user\\documents\\visual\ studio\ 2013\\Projects\\Noriy\ LocalDb\\Noriy\ LocalDb\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='NoriyEntities']/@connectionString" />
+  </parameter>
+</parameters>

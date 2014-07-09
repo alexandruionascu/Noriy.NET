@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/DashboardLayout.cshtml";
+}
+
+<h2>Categories</h2>
+
+<table id="categories" class="table table-striped">
+
+    <thead>
+
+        <tr>
+
+            <th>Number</th>
+
+            <th>Name</th>
+
+            <th>Active</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="categories-body"></tbody>
+
+</table>
+
+<script src="~/Scripts/jquery.dataTables.min.js"></script>
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+<table id="list" class="scroll" cellpadding="0" cellspacing="0"></table>
+<div id="pager" class="scroll" style="text-align:center;"></div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    $('#traffic').dataTable();
+    //});
+
+    $(document).ready(function () {
+
+       
+        $.when($.ajax({
+            url: "http://localhost:8942/api/category/",
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                $.each(data, function (index, value) {
+                        $("#categories-body").append("<tr><td>" + value.id + "</td><td>" + value.name + "</td><td><input id=\"" + value.id + "\"class=\"checkbox\" type=\"checkbox\" /></td></tr>");
+                });
+            },
+            error: function (request, status, error) {
+                var obj = jQuery.parseJSON(request.responseText);
+                alert(request.responseText);
+            },
+            beforeSend: setHeader
+        })).done(function () {
+            $('#categories').DataTable();
+            //checkbox change event
+            $(".checkbox").change(function () {
+                var linkObj = {
+                    UserId : "@ViewBag.UserId",
+                    CategoryId: this.id
+                }
+                if (this.checked) {
+                    $.ajax({
+                        url: "http://localhost:8942/api/categorylink/",
+                        type: "POST",
+                        data: linkObj,
+                        error: function () {
+                            alert("error, category not selected");
+                        },
+                        beforeSend: setHeader
+
+                    });
+                }
+                else {
+                    //remove category
+                    $.ajax({
+                        url: "http://localhost:8942/api/categorylink/",
+                        type: "DELETE",
+                        data: linkObj,
+                        error: function () {
+                            alert("Category not removed!")
+                        },
+                        beforeSend: setHeader
+                    });
+                }
+
+            });
+
+            $.ajax({
+                url: "http://localhost:8942/api/categorylink/" + "@ViewBag.UserId",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                   // alert("got it");
+                    $.each(data, function (index, value) {
+                        $("#"+value.categoryId).attr('checked','checked');
+                    });
+
+                },
+                error: function () {
+                    alert("couldnt load user stuff");
+
+                },
+                beforeSend: setHeader
+
+
+            });
+
+        });
+
+
+       
+
+
+    });
+
+    function setHeader(xhr) {
+        var accessToken = sessionStorage["accessToken"] || localStorage["accessToken"];
+        if (accessToken)
+            xhr.setRequestHeader('Authorization', 'bearer ' + accessToken);
+    }
+
+
+
+
+
+</script>
