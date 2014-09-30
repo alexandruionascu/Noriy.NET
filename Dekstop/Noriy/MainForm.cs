@@ -29,7 +29,7 @@ namespace Noriy
         private Login LoginForm = null;
         private Admin AdminForm = null;
         public static string Guid = "";
-        
+ //first commit from school       
 
         public MainForm()
         {
