@@ -28,8 +28,7 @@ namespace Noriy
         private bool active = false;
         private Login LoginForm = null;
         private Admin AdminForm = null;
-        public static string Guid = "";
- //first commit from school       
+        public static string Guid = "";       
 
         public MainForm()
         {
@@ -142,23 +141,12 @@ namespace Noriy
         }
         protected void Logout_Click(Object sender, System.EventArgs e)
         {
-           /* Reg.SetValue("username", "null");
             LoadMenu(true);
             if (Proxy != null)
             {
                 Proxy.Dispose();
-            }
-
-            notifyIcon1.Text = "Please log in!";
-            if (AdminForm != null)
-            {
-                if (AdminForm.IsDisposed == false)
-                {
-                    AdminForm.Close();
-                }
-            }
-            */
-
+	    }
+       
             Logout LogoutForm = new Logout();
             LogoutForm.FormClosed += new FormClosedEventHandler(LogoutForm_FormClosed);
             LogoutForm.Show();

@@ -20,7 +20,7 @@ namespace Noriy
     {
         //Global varaibles
         public bool SuccesfulLogin = false;
-
+	private String Host = "http://www.noriy.net/";
         //------------
         public Login()
         {
@@ -37,7 +37,7 @@ namespace Noriy
             else
             {
 
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:6649/Token");
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Host + "/Token");
                 httpWebRequest.ContentType = "application/x-www-form-urlencoded";
                 httpWebRequest.Method = "POST";
 
@@ -75,7 +75,7 @@ namespace Noriy
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://localhost:59873/Basic_Registration/Register.aspx");
+            System.Diagnostics.Process.Start(Host + "/welcome");
         }
     }
 }

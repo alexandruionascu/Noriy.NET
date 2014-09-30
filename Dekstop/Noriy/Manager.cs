@@ -12,6 +12,8 @@ namespace Noriy
 {
     public static class Manager
     {
+	private String Host = "www.noriy.net/api/";
+
         #region RegistryManage
         //Creates registry key
         private static void CreateRegistry()
@@ -117,7 +119,7 @@ namespace Noriy
         {
             try
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:6649/api/account/userinfo");
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Host + "account/userinfo");
                 httpWebRequest.Method = "GET";
                 httpWebRequest.Headers.Add("Authorization", "bearer " + Manager.GetToken());
 
@@ -152,7 +154,7 @@ namespace Noriy
             
 
 
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("http://localhost:6649/api/Check");
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Host + "/api/Check");
             httpWebRequest.ContentType = "application/json";
             httpWebRequest.Method = "POST";
 
