@@ -1,4 +1,4 @@
-Noriy.NET - One Step Ahead
+<h1> <img src="https://github.com/alexandruionascu/Noriy/blob/master/pictures/wallpapers/noriylogo.png" height="50px" /> Noriy.NET - One Step Ahead </h1>
 =====
 <h2> Introduction </h2>
 
