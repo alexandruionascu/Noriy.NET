@@ -1,5 +1,4 @@
 <h2> <img src="https://github.com/alexandruionascu/Noriy/blob/master/pictures/wallpapers/noriylogo.png" height="25px"/> Noriy.NET - One Step Ahead </h2>
-=====
 <h2> Introduction </h2>
 
 Noriy.NET is a cloud platform for web safety, parental control and web traffic administration. It is perfect for schools, libraries, families, and even enterprises. It provides cloud service, web application dashboard for administration and desktop client application. The client works on all versions of Windows, and it is runnable partially on Linux with Mono. 
