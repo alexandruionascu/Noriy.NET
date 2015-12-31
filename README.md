@@ -54,6 +54,8 @@ The community is essential for Noriy.NET. Not only users contribute, but also th
 
 Basically, there are endless opportunities. Artificial intelligence, semantic web and so many other features can be implemented and combined with the community’s feedback.
 
+<h4> Screenshots </h4>
+
 <img width="250px" src = "https://github.com/alexandruionascu/Noriy/blob/master/pictures/welcome.png" />
 <img width="250px" height="129px" src = "https://github.com/alexandruionascu/Noriy/blob/master/pictures/desktop_login.png" />
 <br />
@@ -64,6 +66,31 @@ Basically, there are endless opportunities. Artificial intelligence, semantic we
 <img width="250px" src = "https://github.com/alexandruionascu/Noriy/blob/master/pictures/statistics.png" />
 <img width="250px" src = "https://github.com/alexandruionascu/Noriy/blob/master/pictures/login.png" />
 
+
+<h4> Technologies </h4>
+
+Backend
+* ASP.NET WebApi2, MVC5
+* MS-SQL Server
+* Redis Distrubuted Caching
+
+Frontend
+* Bootstrap
+* JQuery
+
+Desktop Client
+* Visual C#
+* Fiddlercore API (for man-in-the-middle proxy)
+
+Other libraries:
+* Entity Framework
+* Newtonsoft Json
+
+
+<h4> Contribute </h4>
+
+Please note that this is an outdated version of Noriy.NET (v2). Please contact me if you want to contribute on Noriy.NET v3. 
+Email: alexandruionascu.bd@gmail.com
 
 
 
