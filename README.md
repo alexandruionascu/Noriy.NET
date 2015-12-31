@@ -5,6 +5,8 @@ Noriy.NET is a cloud platform for web safety, parental control and web traffic a
 
 <h5> Website: www.noriy.net </h5>
 
+https://vimeo.com/127705699
+
 <h2>Features </h2>
 
 <h4> Blacklist </h4>
